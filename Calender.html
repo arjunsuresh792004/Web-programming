@@ -1,0 +1,105 @@
+<html>
+<head>
+    <title>Year Calendar</title>
+
+    <script type="text/javascript">
+
+        function day_title(day_name)
+        {
+            document.write("<td align='center' width='30' bgcolor='green'><b>"
+                           + day_name + "</b></td>");
+        }
+
+        function fill_table(month, month_len)
+        {
+            day = 1;
+
+            document.write("<table border='1' cellspacing='2' cellpadding='3'>");
+
+            document.write("<tr><td colspan='7' align='center' bgcolor='yellow'><b>"
+                           + month + " " + year + "</b></td></tr>");
+
+            document.write("<tr>");
+
+            day_title("SUN");
+            day_title("MON");
+            day_title("TUE");
+            day_title("WED");
+            day_title("THU");
+            day_title("FRI");
+            day_title("SAT");
+
+            document.write("</tr><tr>");
+
+            // Fill empty cells before the first day
+            for (var i = 1; i < start_day; i++)
+            {
+                document.write("<td></td>");
+            }
+
+            // Display the first week
+            for (var i = start_day; i <= 7; i++)
+            {
+                document.write("<td align='center' bgcolor='orange'>"
+                               + day + "</td>");
+                day++;
+            }
+
+            document.write("</tr>");
+
+            // Display remaining weeks
+            while (day <= month_len)
+            {
+                document.write("<tr>");
+
+                for (var i = 1; i <= 7 && day <= month_len; i++)
+                {
+                    document.write("<td align='center' bgcolor='orange'>"
+                                   + day + "</td>");
+                    day++;
+                }
+
+                document.write("</tr>");
+
+                start_day = i;
+            }
+
+            document.write("</table><br>");
+
+            // Calculate starting day for the next month
+            start_day = i;
+        }
+
+        // Get year from user
+        var year = prompt("Enter the Year", "2020");
+
+        // Find the day of January 1
+        var today = new Date("January 1, " + year);
+        var start_day = today.getDay() + 1;
+
+        // Display all months
+        fill_table("January", 31);
+
+        // Check leap year
+        if (year % 4 == 0)
+            fill_table("February", 29);
+        else
+            fill_table("February", 28);
+
+        fill_table("March", 31);
+        fill_table("April", 30);
+        fill_table("May", 31);
+        fill_table("June", 30);
+        fill_table("July", 31);
+        fill_table("August", 31);
+        fill_table("September", 30);
+        fill_table("October", 31);
+        fill_table("November", 30);
+        fill_table("December", 31);
+
+    </script>
+</head>
+
+<body>
+</body>
+</html>
