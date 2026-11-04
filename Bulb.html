@@ -1,0 +1,19 @@
+<html>
+<head>
+ <title>Bulb ON/OFF</title>
+</head>
+<body>
+<h2>Bulb ON/OFF Control</h2>
+<p id="bulb"> ⚫ Bulb is OFF</p>
+<button onclick="turnOn()">ON</button>
+<button onclick="turnOff()">OFF</button>
+<script>
+function turnOn() {
+document.getElementById("bulb").innerHTML = " 💡Bulb is ON";
+}
+function turnOff() {
+document.getElementById("bulb").innerHTML = "⚫Bulb is OFF";
+}
+</script>
+</body>
+</html>
